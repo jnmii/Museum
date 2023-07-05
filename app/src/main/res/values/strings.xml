@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Museum</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="labelcategory">Category</string>
+    <string name="art_name">Name: %1$s</string>
+    <string name="art_department">Department: %1$s</string>
+    <string name="art_constituent">Constituent: %1$s</string>
+    <string name="art_repository">Repository: %1$s</string>
+    <string name="art_country">Country: %1$s</string>
+    <string name="art_medium">Medium: %1$s</string>
+    <string name="art_creation_date">Creation Date: %1$s</string>
+    <string name="welcome_to_the_museum">Welcome to the Museum</string>
+    <string name="timer">Countdown: %1$s</string>
+    <string name="art_details">Information about the Art</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="art">Art</string>
+    <string name="details">Details</string>
+    <string name="notifications">Notifications</string>
+
+</resources>
