@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/navigation_art_detail"
-        android:name="com.example.museum.ui.details.ArtDetailFragment"
+        android:name="com.example.museum.ui.home.ArtDetailFragment"
         android:label="@string/art_details"
         tools:layout="@layout/fragment_detail_art" />
 

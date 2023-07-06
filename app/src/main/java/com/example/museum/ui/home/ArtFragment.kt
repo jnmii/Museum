@@ -5,28 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.museum.databinding.FragmentArtBinding
 import com.example.museum.data.model.ArtModel
-import com.example.museum.data.remote.MuseumCall
-import com.example.museum.data.repository.Repository
+import com.example.museum.databinding.FragmentArtBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ArtFragment : Fragment() {
 
-
-    @Inject
-    lateinit var repository: Repository
-    private var _binding: FragmentArtBinding? = null
+    lateinit var _binding: FragmentArtBinding
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,44 +25,41 @@ class ArtFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentArtBinding.inflate(inflater, container, false)
-        loadData()
 
-        return binding.root
+        val viewModel :ArtViewModel by viewModels()
+
+        if (!viewModel.isLoaded) {
+            viewModel.loadData()
+        }
+        viewModel.artLiveData.observe(viewLifecycleOwner) {
+             loadData(it)
+        }
+
+
+        return _binding.root
     }
 
 
-    private fun loadData() {
-        CoroutineScope(Dispatchers.Main).launch {
+    private fun loadData(result: MutableList<ArtModel>) {
+        _binding.apply {
+            //    binding.idProgressBar.visibility = View.VISIBLE
+            //     val viewModel by viewModels<ArtViewModel>()
+            //    try {
 
-        //    binding.idProgressBar.visibility = View.VISIBLE
-
-       //     val viewModel by viewModels<ArtViewModel>()
-
-        //    try {
-                var artObject = repository.getArtById("112")
-            val art: MutableList<ArtModel> = mutableListOf()
-            art.add(artObject)
-             //  val art = apiCall.getAllArt()
-
-                binding.rvCategory.apply { layoutManager =
+            //  val art = apiCall.getAllArt()
+            _binding.rvCategory.apply {
+                layoutManager =
                     StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-                    adapter = ArtAdapter(art)
-
-                }
-         //   }catch (e: Exception){
-
-           // }finally {
-               // binding.idProgressBar.visibility = View.GONE
-           // }
+                adapter = ArtAdapter(result)
+            }
+            //   }catch (e: Exception){
+            // }finally {
+            // binding.idProgressBar.visibility = View.GONE
+            // }}
 
         }
     }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
+
+

@@ -1,4 +1,4 @@
-package com.example.museum.ui.details
+package com.example.museum.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.museum.R
 import com.example.museum.databinding.FragmentDetailArtBinding
 import com.example.museum.data.model.ArtModel
-import com.example.museum.data.remote.MuseumCall
 import com.example.museum.data.repository.Repository
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint

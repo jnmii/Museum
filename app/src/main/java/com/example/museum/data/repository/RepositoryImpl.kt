@@ -8,10 +8,8 @@ class RepositoryImpl @Inject constructor(
     val museumCall: MuseumCall
 ): Repository {
 
-
-
     override suspend fun getArtById(id: String): ArtModel {
-        return museumCall.getArtById("id")
+        return museumCall.getArtById(id)
     }
 
     override suspend fun getAllArt(): List<ArtModel> {

@@ -4,18 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.museum.R
 import com.example.museum.databinding.ItemArtBinding
 import com.example.museum.data.model.ArtModel
-import com.example.museum.ui.details.DetailsViewModel
 import com.google.gson.Gson
 
 
-class ArtAdapter(val art: List<ArtModel>) : RecyclerView.Adapter<ArtAdapter.ViewHolder>() {
+class ArtAdapter(val art: MutableList<ArtModel>) : RecyclerView.Adapter<ArtAdapter.ViewHolder>() {
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemArtBinding.bind(view)
