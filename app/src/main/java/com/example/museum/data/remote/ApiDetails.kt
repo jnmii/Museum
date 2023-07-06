@@ -1,4 +1,4 @@
-package com.example.museum.remote
+package com.example.museum.data.remote
 
 object ApiDetails {
     const val BASE_URL: String = "https://collectionapi.metmuseum.org/public/collection/v1/"

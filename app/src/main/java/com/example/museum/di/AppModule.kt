@@ -1,7 +1,9 @@
 package com.example.museum.di
 
-import com.example.museum.remote.ApiCall
-import com.example.museum.remote.ApiDetails
+import com.example.museum.data.remote.MuseumCall
+import com.example.museum.data.remote.ApiDetails
+import com.example.museum.data.repository.Repository
+import com.example.museum.data.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,8 +40,14 @@ class AppModule {
     @Provides
     fun provideAPI(
         retrofit: Retrofit
-    ): ApiCall {
-        return retrofit.create(ApiCall::class.java)
+    ): MuseumCall {
+        return retrofit.create(MuseumCall::class.java)
+    }
+
+    @Provides
+    fun provideRepo(museumCall: MuseumCall):Repository{
+    return RepositoryImpl(museumCall)
+
     }
 
 }

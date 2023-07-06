@@ -1,4 +1,4 @@
-package com.example.museum.model
+package com.example.museum.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -20,7 +20,7 @@ data class ArtModel (
     @SerializedName("additionalImages")
     val additionalImages: List<String?>?,
     @SerializedName("constituents")
-    val constituents: List<ArtModel>?,
+    val constituents: List<ConstituentModel>?,
     @SerializedName("department")
     val department: String?,
     @SerializedName("objectName")

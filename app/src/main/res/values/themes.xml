@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.HarryPotter" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.AppCompat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/design_default_color_background</item>
         <item name="colorPrimaryVariant">@color/design_default_color_primary_variant</item>
@@ -15,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Museum" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Museum" parent="Theme.MaterialComponents.DayNight.DarkActionBar" />
     <style name="ScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
     </style>

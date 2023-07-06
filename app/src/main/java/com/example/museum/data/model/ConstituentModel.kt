@@ -1,4 +1,4 @@
-package com.example.museum.model
+package com.example.museum.data.model
 
 import com.google.gson.annotations.SerializedName
 

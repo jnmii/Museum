@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(){
 
         val navView: BottomNavigationView = binding.navView
 
-        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#412E1F")))
+//        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#412E1F")))
 
 
         navController = findNavController(R.id.nav_host_fragment_activity_main)

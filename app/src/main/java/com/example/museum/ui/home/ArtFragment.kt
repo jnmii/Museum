@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.museum.databinding.FragmentHomeBinding
-import com.example.museum.remote.ApiCall
+import com.example.museum.databinding.FragmentArtBinding
+import com.example.museum.data.model.ArtModel
+import com.example.museum.data.remote.MuseumCall
+import com.example.museum.data.repository.Repository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -21,8 +21,8 @@ class ArtFragment : Fragment() {
 
 
     @Inject
-    lateinit var apiCall: ApiCall
-    private var _binding: FragmentHomeBinding? = null
+    lateinit var repository: Repository
+    private var _binding: FragmentArtBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -35,7 +35,7 @@ class ArtFragment : Fragment() {
     ): View {
 
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentArtBinding.inflate(inflater, container, false)
         loadData()
 
         return binding.root
@@ -45,23 +45,26 @@ class ArtFragment : Fragment() {
     private fun loadData() {
         CoroutineScope(Dispatchers.Main).launch {
 
-            binding.idProgressBar.visibility = View.VISIBLE
+        //    binding.idProgressBar.visibility = View.VISIBLE
 
-            try {
+       //     val viewModel by viewModels<ArtViewModel>()
 
-                var result = apiCall.getAllArt()
-                apiCall.getAllArt()
+        //    try {
+                var artObject = repository.getArtById("112")
+            val art: MutableList<ArtModel> = mutableListOf()
+            art.add(artObject)
+             //  val art = apiCall.getAllArt()
 
-                binding.rvCategory.apply {
-                    layoutManager =
-                        StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-                    adapter = ArtAdapter(result)
+                binding.rvCategory.apply { layoutManager =
+                    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                    adapter = ArtAdapter(art)
+
                 }
-            }catch (e: Exception){
+         //   }catch (e: Exception){
 
-            }finally {
-                binding.idProgressBar.visibility = View.GONE
-            }
+           // }finally {
+               // binding.idProgressBar.visibility = View.GONE
+           // }
 
         }
     }
